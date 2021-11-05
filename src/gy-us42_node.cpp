@@ -50,7 +50,7 @@ class SonarPublisher : public rclcpp::Node
     void timer_callback()
     {
       int distance = mySonar.readDistance();  // Range measurment in centimeters
-      RCLCPP_INFO(this->get_logger(), "Read disance %i", distance);
+      RCLCPP_DEBUG(this->get_logger(), "Read disance %i", distance);
 
       rclcpp::Time now = this->get_clock()->now();
       auto message = sensor_msgs::msg::Range();
