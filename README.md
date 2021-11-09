@@ -11,6 +11,8 @@ The code runs successfully, reading the sonar and publishing the expected messag
 ## Considerations
 I cannot find an official data sheet for this sensor.  All the references state that the device works like the Maxbotix MaxSonar.  I detected the i2c address (0x70) and applied the Maxbotix logic.  When I read two bytes for the range the high byte is allways 128 when the range is less than 256 cm.  The moment a second byte is needed to represent distance, the high byte increases to 129 and 130 respectively.  I argue that the correct range should be the low_byte + (high_byte - 128) * 100.  This is rather unique, but seems to work.  If anyone has alternative wisdom (or the data sheet) please advise.  I also found the maximum range for the node to be 400 cm.  Annything further returns 402.  Minimim distance measured is abour 20cm. 
 
+NEXT DAY:  Today the high byte is 0.  Nothing has changed.  Stragnge behavior.  Still looking for that data sheet.
+
 ## Improvements
 Node can be improved by adding parameters for the i2c sensor address (0x70)
 
