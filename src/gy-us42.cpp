@@ -70,7 +70,8 @@ uint16_t Sonar::readDistance()
   // The high byte is by default 128.  The moment the range is over 255 cm (more than one
   // byte, the high byte increases to 129, 130, etc.  I applied this logic in here.
   // I do not have a data sheet to explain this anomaly.
-  uint16_t value = ((uint16_t)readBuffer[0]-128) * 100 + (uint16_t)readBuffer[1];
+  // Removed this "hack".  We have had proper performance where high byte returns 0 at shorter distances.
+  uint16_t value = ((uint16_t)readBuffer[0]-0) * 100 + (uint16_t)readBuffer[1];
 
   return value;
 }
